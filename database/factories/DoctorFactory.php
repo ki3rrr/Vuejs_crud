@@ -22,7 +22,7 @@ class DoctorFactory extends Factory
             'specialization'=>fake()->randomElement([
                 'Emergency Medicine',
                 'Pediatrics',
-                ' Family medicine'
+                'Family Medicine'
             ]),
             'email'=>fake()->unique()->safeEmail(),
             'phone'=>fake()->phoneNumber()

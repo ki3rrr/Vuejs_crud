@@ -14,11 +14,16 @@ class DashboardController extends Controller
         $patientCount = Patient::count();
         $doctorCount = Doctor::count();
         $appointmentCount = Appointment::count();
+        $recentAppointments = Appointment::with(['patient', 'doctor'])
+            ->latest('appointment_date')
+            ->take(5)
+            ->get();
 
         return view('dashboard', compact(
             'patientCount',
             'doctorCount',
-            'appointmentCount'
+            'appointmentCount',
+            'recentAppointments'
         )); 
     }
 }
